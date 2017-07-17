@@ -2,6 +2,7 @@
 package com.tonykazanjian.exoplayersample;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -53,7 +54,6 @@ public class PlayerActivity extends AppCompatActivity {
 
     // needed to estimate available network bandwidth based on measured downlaod speed.
     private static final DefaultBandwidthMeter BANDWIDTH_METER = new DefaultBandwidthMeter();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
