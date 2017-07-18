@@ -13,6 +13,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License. -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
           package="com.example.exoplayer">
 
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -23,7 +24,8 @@ limitations under the License. -->
         android:label="@string/app_name"
         android:supportsRtl="true">
         <activity android:name="com.tonykazanjian.exoplayersample.MainActivity"
-            android:theme="@style/Theme.AppCompat.Light">
+                  android:theme="@style/Theme.AppCompat.Light"
+                  tools:targetApi="n">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -31,9 +33,12 @@ limitations under the License. -->
         </activity>
         <activity
             android:name="com.tonykazanjian.exoplayersample.PlayerActivity"
+            android:supportsPictureInPicture="true"
+
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
             android:label="@string/player_activity_name"
-            android:theme="@style/PlayerTheme">
+            android:theme="@style/PlayerTheme"
+            tools:targetApi="n">
         </activity>
     </application>
 

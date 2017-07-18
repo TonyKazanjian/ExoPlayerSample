@@ -11,13 +11,22 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License. -->
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000">
 
-  <com.google.android.exoplayer2.ui.SimpleExoPlayerView android:id="@+id/video_view"
+  <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+      android:id="@+id/video_view"
       android:layout_width="match_parent"
-      android:layout_height="match_parent"/>
+      android:layout_centerVertical="true"
+      android:layout_height="150dp"/>
 
-</FrameLayout>
+  <Button
+      android:id="@+id/pip"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:text="Enter PiP mode"/>
+
+</RelativeLayout>

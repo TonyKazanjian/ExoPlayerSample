@@ -2,14 +2,20 @@
 package com.tonykazanjian.exoplayersample;
 
 import android.annotation.SuppressLint;
+import android.app.PictureInPictureParams;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.util.Rational;
 import android.view.Surface;
 import android.view.View;
+import android.widget.ScrollView;
 
 import com.example.exoplayer.R;
 import com.google.android.exoplayer2.DefaultLoadControl;
@@ -41,6 +47,7 @@ import com.google.android.exoplayer2.video.VideoRendererEventListener;
 /**
  * A fullscreen activity to play audio or video streams.
  */
+@RequiresApi(api = Build.VERSION_CODES.O)
 public class PlayerActivity extends AppCompatActivity {
 
     private static final String TAG = PlayerActivity.class.getSimpleName();
@@ -54,6 +61,37 @@ public class PlayerActivity extends AppCompatActivity {
     private long playbackPosition;
     private int currentWindow;
     private boolean playWhenReady = true;
+
+    /** The arguments to be used for Picture-in-Picture mode. */
+    private final PictureInPictureParams.Builder mPictureInPictureParamsBuilder =
+            new PictureInPictureParams.Builder();
+
+    private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()) {
+                case R.id.pip:
+                    minimize();
+                    break;
+            }
+        }
+    };
+
+    /**
+     * Enters Picture-in-Picture mode.
+     */
+    void minimize() {
+        if (playerView == null) {
+            return;
+        }
+        // Hide the controls in picture-in-picture mode.
+        playerView.hideController();
+        // Calculate the aspect ratio of the PiP screen.
+        Rational aspectRatio = new Rational(2, 2);
+        mPictureInPictureParamsBuilder.setAspectRatio(aspectRatio).build();
+        enterPictureInPictureMode(mPictureInPictureParamsBuilder.build());
+        findViewById(R.id.pip).setVisibility(View.INVISIBLE);
+    }
 
     // needed to estimate available network bandwidth based on measured downlaod speed.
     private static final DefaultBandwidthMeter BANDWIDTH_METER = new DefaultBandwidthMeter();
@@ -75,6 +113,7 @@ public class PlayerActivity extends AppCompatActivity {
         mComponentListener = new ComponentListener();
 
         mVideo = getIntent().getParcelableExtra(VIDEO_EXTRA);
+        findViewById(R.id.pip).setOnClickListener(mOnClickListener);
     }
 
     @Override
