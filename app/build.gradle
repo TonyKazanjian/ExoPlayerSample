@@ -29,6 +29,9 @@ dependencies {
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.google.android.exoplayer:exoplayer:r2.4.0'
     compile 'com.android.support:recyclerview-v7:25.3.1'
-
+    compile 'com.google.protobuf.nano:protobuf-javanano:3.0.0-alpha-7'
     testCompile 'junit:junit:4.12'
+    compile project(':sdk-common-1.70.0')
+    compile project(':sdk-commonwidget-1.70.0')
+    compile project(':sdk-videowidget-1.70.0')
 }
