@@ -40,6 +40,9 @@ limitations under the License. -->
             android:theme="@style/PlayerTheme"
             tools:targetApi="n">
         </activity>
+
+        <activity android:name="com.tonykazanjian.exoplayersample.VRPlayerActivity"
+                  android:theme="@style/Theme.AppCompat.Light"/>
     </application>
 
 </manifest>

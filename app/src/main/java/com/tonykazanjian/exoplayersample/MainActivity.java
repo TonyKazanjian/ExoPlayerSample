@@ -1,5 +1,7 @@
 package com.tonykazanjian.exoplayersample;
 
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -94,10 +96,12 @@ public class MainActivity extends AppCompatActivity implements VideoAdapter.Vide
     public void startVideoPlayer(String tag) {
         switch (tag){
             case "normal":
-                startActivity(PlayerActivity.newIntent(this, mVideoList.get(0)));
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    startActivity(PlayerActivity.newIntent(this, mVideoList.get(0)));
+                }
                 break;
             case "VR":
-                startActivity(PlayerActivity.newIntent(this, mVideoList.get(1)));
+                startActivity(new Intent(this, VRPlayerActivity.class));
                 break;
         }
     }
