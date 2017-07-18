@@ -1,12 +1,14 @@
 {"result": {
   "videos": [
     {
-      "title": "AwesomeVideo1",
-      "url": "http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4"
+      "title": "Streaming Video",
+      "url": "http://www.youtube.com/api/manifest/dash/id/bf5bb2419360daf1/source/youtube?as=fmp4_audio_clear,fmp4_sd_hd_clear&sparams=ip,ipbits,expire,source,id,as&ip=0.0.0.0&ipbits=0&expire=19000000000&signature=51AF5F39AB0CEC3E5497CD9C900EBFEAECCCB5C7.8506521BFC350652163895D4C26DEE124209AA9E&key=ik0",
+      "tag": "normal"
     },
     {
-      "title": "VRVideo1",
-      "url": "https://r5---sn-a5meknl7.googlevideo.com/videoplayback?quality=medium&type=video%2Fmp4%3B+codecs%3D%22avc1.42001E%2C+mp4a.40.2%22&sparams=clen,dur,ei,expire,gir,id,ip,ipbits,ipbypass,itag,lmt,mime,mip,mm,mn,ms,mv,pl,ratebypass,requiressl,source&ei=Ni5tWfjvHcOE8wSClKW4CQ&ip=209.205.200.210&clen=10767529&id=o-ALcP8HL_AwDBgracfUquJVLrPMD9VOEazHKzaoLlhPUj&signature=049F3C0FC5BCCB4F99C6A6C9F00700597CD82FE9.339496FE2DFE6828B44A4CE006000B5239CBD691&ipbits=0&lmt=1486814058731700&expire=1500349078&key=cms1&mime=video/mp4&gir=yes&requiressl=yes&ratebypass=yes&source=youtube&dur=188.662&pl=35&itag=18&title=(Hdvidz.in)_Titanic-VR-Google-Cardboard-3D-SBS-Virtual-Reality-Video&redirect_counter=1&req_id=2596b3199857a3ee&cms_redirect=yes&ipbypass=yes&mip=2606:6000:6718:6700:ad5b:94f1:938a:3daa&mm=31&mn=sn-a5meknl7&ms=au&mt=1500327400&mv=m"
+      "title": "VR Video",
+      "url": "https://r5---sn-a5meknl7.googlevideo.com/videoplayback?quality=medium&type=video%2Fmp4%3B+codecs%3D%22avc1.42001E%2C+mp4a.40.2%22&sparams=clen,dur,ei,expire,gir,id,ip,ipbits,ipbypass,itag,lmt,mime,mip,mm,mn,ms,mv,pl,ratebypass,requiressl,source&ei=Ni5tWfjvHcOE8wSClKW4CQ&ip=209.205.200.210&clen=10767529&id=o-ALcP8HL_AwDBgracfUquJVLrPMD9VOEazHKzaoLlhPUj&signature=049F3C0FC5BCCB4F99C6A6C9F00700597CD82FE9.339496FE2DFE6828B44A4CE006000B5239CBD691&ipbits=0&lmt=1486814058731700&expire=1500349078&key=cms1&mime=video/mp4&gir=yes&requiressl=yes&ratebypass=yes&source=youtube&dur=188.662&pl=35&itag=18&title=(Hdvidz.in)_Titanic-VR-Google-Cardboard-3D-SBS-Virtual-Reality-Video&redirect_counter=1&req_id=2596b3199857a3ee&cms_redirect=yes&ipbypass=yes&mip=2606:6000:6718:6700:ad5b:94f1:938a:3daa&mm=31&mn=sn-a5meknl7&ms=au&mt=1500327400&mv=m",
+      "tag": "VR"
     }
   ]
 }

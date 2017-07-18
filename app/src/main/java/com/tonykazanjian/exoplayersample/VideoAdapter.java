@@ -18,9 +18,11 @@ import java.util.List;
 public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoHolder> {
 
     private List<Video> mVideoList;
+    private VideoListener mVideoListener;
 
-    public VideoAdapter(List<Video> videoList) {
+    public VideoAdapter(List<Video> videoList, VideoListener listener) {
         mVideoList = videoList;
+        mVideoListener = listener;
     }
 
     @Override
@@ -31,8 +33,14 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoHolder>
 
     @Override
     public void onBindViewHolder(VideoHolder holder, int position) {
-        Video video = mVideoList.get(position);
+        final Video video = mVideoList.get(position);
         holder.mTextView.setText(video.getTitle());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mVideoListener.startVideoPlayer(video.getTag());
+            }
+        });
 
     }
 
@@ -42,14 +50,16 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoHolder>
     }
 
     class VideoHolder extends RecyclerView.ViewHolder{
-        ImageView mImageView;
         TextView mTextView;
 
         public VideoHolder(View itemView) {
             super(itemView);
-            mImageView = (ImageView)itemView.findViewById(R.id.video_thumbnail);
             mTextView = (TextView)itemView.findViewById(R.id.video_title);
         }
+    }
+
+    public interface VideoListener {
+        void startVideoPlayer(String tag);
     }
 
 }

@@ -2,6 +2,7 @@
 package com.tonykazanjian.exoplayersample;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -43,10 +44,12 @@ import com.google.android.exoplayer2.video.VideoRendererEventListener;
 public class PlayerActivity extends AppCompatActivity {
 
     private static final String TAG = PlayerActivity.class.getSimpleName();
+    public static final String VIDEO_EXTRA = "VIDEO_EXTRA";
 
     private SimpleExoPlayer player;
     private SimpleExoPlayerView playerView;
     private ComponentListener mComponentListener;
+    private Video mVideo;
 
     private long playbackPosition;
     private int currentWindow;
@@ -55,6 +58,14 @@ public class PlayerActivity extends AppCompatActivity {
     // needed to estimate available network bandwidth based on measured downlaod speed.
     private static final DefaultBandwidthMeter BANDWIDTH_METER = new DefaultBandwidthMeter();
 
+    public static Intent newIntent(Context context, Video video){
+        Intent intent = new Intent(context, PlayerActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(VIDEO_EXTRA, video);
+        intent.putExtras(bundle);
+        return intent;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +73,8 @@ public class PlayerActivity extends AppCompatActivity {
 
         playerView = (SimpleExoPlayerView) findViewById(R.id.video_view);
         mComponentListener = new ComponentListener();
+
+        mVideo = getIntent().getParcelableExtra(VIDEO_EXTRA);
     }
 
     @Override
@@ -112,7 +125,8 @@ public class PlayerActivity extends AppCompatActivity {
             player.setPlayWhenReady(playWhenReady);
             player.seekTo(currentWindow, playbackPosition);
         }
-        MediaSource mediaSource = buildMediaSource(Uri.parse(getString(R.string.media_url_dash)));
+
+        MediaSource mediaSource = buildMediaSource(Uri.parse(mVideo.getUrl()));
         player.prepare(mediaSource, true, false);
     }
 

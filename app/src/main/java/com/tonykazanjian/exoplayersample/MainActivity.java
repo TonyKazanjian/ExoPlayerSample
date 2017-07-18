@@ -21,11 +21,13 @@ import java.util.List;
  * @author Tony Kazanjian
  */
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements VideoAdapter.VideoListener{
 
     private VideoAssets mVideoAssets;
     private RecyclerView mRecyclerView;
     private VideoAdapter mVideoAdapter;
+    private Video video;
+    private List<Video> mVideoList;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView = (RecyclerView) findViewById(R.id.videoRv);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        mVideoAdapter = new VideoAdapter(createVideoList());
+        mVideoList = createVideoList();
+        mVideoAdapter = new VideoAdapter(mVideoList, this);
         mRecyclerView.setAdapter(mVideoAdapter);
     }
 
@@ -78,11 +81,24 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < videoJsonArray.length(); i++) {
             JSONObject jsonObject = videoJsonArray.getJSONObject(i);
 
-            Video video = new Video();
+            video = new Video();
             video.setUrl(jsonObject.getString("url"));
             video.setTitle(jsonObject.getString("title"));
+            video.setTag(jsonObject.getString("tag"));
 
             videos.add(video);
+        }
+    }
+
+    @Override
+    public void startVideoPlayer(String tag) {
+        switch (tag){
+            case "normal":
+                startActivity(PlayerActivity.newIntent(this, mVideoList.get(0)));
+                break;
+            case "VR":
+                startActivity(PlayerActivity.newIntent(this, mVideoList.get(1)));
+                break;
         }
     }
 }
